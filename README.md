@@ -1,2 +1,2 @@
 # MERN_projects
-one single repofor all MERN projects
+one single repo for all MERN projects
