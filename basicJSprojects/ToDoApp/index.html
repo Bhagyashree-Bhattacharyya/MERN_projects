@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main bg-gray-900 min-h-screen flex items-center justify-center">
+        <div class="w-96 p-8 bg-white rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-gray-900 text-center mb-4">My ToDos</h1>
+            <form class="todo-form flex mb-4">
+                <input class="input rounded-md px-4 py-2 w-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Add your ToDos here..." />
+                <button class="button btn-primary ml-2 px-4 py-2 rounded-lg bg-blue-500 text-white font-bold">Add</button>
+            </form>
+            <div class="todos-container h-80 overflow-y-auto">
+                <div class="todos flex items-center py-2">
+                    <div class="checked-todo line-through text-gray-900">Learn Tailwind CSS</div>
+                    <button class="del-btn ml-2 text-gray-100"><i class="material-icons-outlined">delete</i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="index.html"></script>
+</body>
+</html>

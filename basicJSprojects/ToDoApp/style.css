@@ -1,0 +1,76 @@
+/* Imports */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom Root Variables */
+:root {
+    --text-color-primary: #f9fafb;
+    --background-color: #111827;
+}
+
+/* Body styles */
+body {
+    background-color: var(--background-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Main container styles */
+.main {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Heading styles */
+h1 {
+    color: var(--text-color-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Form styles */
+.todo-form {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    border-radius: 4px;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border: none;
+    width: 100%; /* Full width */
+    margin-right: 0.5rem;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Todos container styles */
+.todos-container {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+/* Todo item styles */
+.todos {
+    padding: 0.5rem 0;
+}
+
+.checked-todo {
+    text-decoration: line-through;
+    color: var(--text-color-primary);
+}
+
+.del-btn {
+    color: #f9fafb;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
