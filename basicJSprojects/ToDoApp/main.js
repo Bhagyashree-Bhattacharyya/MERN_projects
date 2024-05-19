@@ -1,24 +1,25 @@
-document.addEventListener("DOMContentLoaded", function() {
+// document.addEventListener("DOMContentLoaded", function() {
     let todoInput = document.querySelector(".input");
     let addTodoBtn = document.querySelector(".button");
     let todosContainer = document.querySelector(".todos-container");
     let todoText = " ";
 
-    let localData = JSON.parse(localStorage.getItem("todos"));
-    let todos= localData || [];
+    // let localData = JSON.parse(localStorage.getItem("todos"));
+    let todos = [];
 
     addTodoBtn.addEventListener("click", (e) => {
         e.preventDefault();
         todoText = todoInput.value.trim();
-        if (todoText === "") return;
-
-        const todo = {
-            id: Date.now(),
-            text: todoText,
-            completed: false
-        };
-
-        todos.push(todo);
+        // if (todoText === "") return;
+        if (todoText.length > 0){
+            const todo = {
+                id: Date.now(),
+                text: todoText,
+                completed: false
+            };
+            todos.push(todo);
+        }
+        console.log(todos);
         renderTodos();
         todoInput.value = "";
     });
@@ -27,11 +28,25 @@ document.addEventListener("DOMContentLoaded", function() {
         todosContainer.innerHTML = "";
         todos.forEach(todo => {
             const todoDiv = document.createElement("div");
+            // todoDiv.innerHTML = `<input type="checkbox">`;
             todoDiv.classList.add("todos", "flex", "items-center", "py-2");
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = todo.completed;
+            checkbox.addEventListener("change", () => {
+                todo.completed = checkbox.checked;
+                renderTodos(); 
+            });
+            todoDiv.appendChild(checkbox);
 
             const todoText = document.createElement("div");
             todoText.textContent = todo.text;
-            todoText.classList.add("checked-todo", todo.completed ? "line-through" : "");
+            todoText.classList.add("todo-text");
+            if (todo.completed) {
+                todoText.classList.add("checked-todo");
+            }
+            todoDiv.appendChild(todoText);
 
             const deleteBtn = document.createElement("button");
             deleteBtn.innerHTML = `<i class="material-icons-outlined">delete</i>`;
@@ -46,4 +61,4 @@ document.addEventListener("DOMContentLoaded", function() {
             todosContainer.appendChild(todoDiv);
         });
     }
-});
+// });

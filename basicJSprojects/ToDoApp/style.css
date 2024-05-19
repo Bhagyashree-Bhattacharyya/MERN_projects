@@ -1,7 +1,9 @@
 /* Imports */
+/* 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss/utilities'; 
+*/
 
 /* Custom Root Variables */
 :root {
@@ -56,21 +58,24 @@ h1 {
 .todos-container {
     height: 70vh;
     overflow-y: auto;
+    color: var(--text-color-primary);
 }
 
 /* Todo item styles */
-.todos {
-    padding: 0.5rem 0;
+.todo-text {
+    flex: 1;
+    margin-left: 0.5rem;
 }
 
 .checked-todo {
     text-decoration: line-through;
-    color: var(--text-color-primary);
+    opacity: 0.6;
 }
 
 .del-btn {
-    color: #f9fafb;
+    color: #d6513a;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    font-size: 0.5rem;
 }
