@@ -16,8 +16,8 @@ const Product = () => {
         },
         {
             id : 1,
-            discountedPrice : 99.00,
-            price : 130.00,
+            discountedPrice : 49.00,
+            price : 90.00,
             title : "title of Item 2",
             thumbnail : "placeholder.jpg"
         },
