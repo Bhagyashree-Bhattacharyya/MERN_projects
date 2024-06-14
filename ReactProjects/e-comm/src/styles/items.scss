@@ -116,6 +116,37 @@
             }
         }
     }
+
+    &__modal {
+        display: flex;
+        .img-wrap {
+            flex-basis: 30%;
+            min-width: 30%;
+        }
+        .meta {
+            padding-left: 10%;
+            flex-grow: 60%;
+            h3 {
+                margin-top: 12px;
+                margin-bottom: 4px;
+                opacity: 0.8;
+            }
+            p {
+                font-weight: 200;
+                color: grey;
+                font-family: Roboto;
+                font-size: 14px;
+            }
+        }
+
+        button.cart-add {
+            border-radius: 0px;
+        }
+        
+        .cart-addon {
+            justify-content: space-between;
+        }
+    }
 }
 
 .pricing {
