@@ -5,11 +5,11 @@ import Loader from "../UI/Loader";
 
 
 
-const Product = () => {
-
+const Product = ({onAddItem, onRemoveItem}) => {
 
     const [items, setItems] = useState([])
     const [loader, setLoader] = useState(true)
+    const [presentItems, setPresentitems] = useState([])
 
     useEffect(() => {
 
@@ -38,32 +38,48 @@ const Product = () => {
         fetchItems();
     }, [])
 
-    const updateItemTitle = async(itemId) => {
-        console.log(`Item with id: ${itemId}`)
-        try {
-            let title = `Update Title #Item-${itemId}`
-            await axios.patch(`https://react-e-comm-d19c1-default-rtdb.asia-southeast1.firebasedatabase.app/items/${itemId}.json`,{
-                title: title
-            })
-            let data = [...items]
-            let index = data.findIndex(e => e.id === itemId)
-            data[index]['title'] = title
+    // const updateItemTitle = async(itemId) => {
+    //     console.log(`Item with id: ${itemId}`)
+    //     try {
+    //         let title = `Update Title #Item-${itemId}`
+    //         await axios.patch(`https://react-e-comm-d19c1-default-rtdb.asia-southeast1.firebasedatabase.app/items/${itemId}.json`,{
+    //             title: title
+    //         })
+    //         let data = [...items]
+    //         let index = data.findIndex(e => e.id === itemId)
+    //         data[index]['title'] = title
 
-            setItems(data)
-        }
-        catch(error) {
-            console.log("Error Updating the data!");
-        }
+    //         setItems(data)
+    //     }
+    //     catch(error) {
+    //         console.log("Error Updating the data!");
+    //     }
+    // }
+
+    const handleAddItem = (id) => {
+        if(presentItems.indexOf(id) > -1) {return;}
+        setPresentitems([...presentItems, id])
+        onAddItem();
+    }
+
+    const handleRemoveItem = (id) => {
+        let index = presentItems.indexOf(id)
+        if (index > -1) {
+            let items = [...presentItems]
+            items.splice(index, 1)
+            setPresentitems([...items]);
+            onRemoveItem();
+        }      
     }
 
     return (
     <>
-    <div className={"product-list"}>
-        <div className="product-list--wrapper">
-                {items.map(item => <ListItem key={item.id} data={item} updateItemTitle={updateItemTitle}/>)}  
+        <div className={"product-list"}>
+            <div className="product-list--wrapper">
+                    {items.map(item => <ListItem onAddItem={handleAddItem} onRemoveItem={handleRemoveItem} key={item.id} data={item}/>)}  
+            </div>
         </div>
-    </div>
-    {loader && <Loader/>}
+        {loader && <Loader/>}
     </>
     )
 }

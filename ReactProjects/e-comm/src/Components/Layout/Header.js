@@ -1,6 +1,6 @@
 import AddToCartIcon from "../../assets/icons/add_cart.svg";
 
-const Header = () => {
+const Header = ({count}) => {
     return (
         <header>
             <div className="nav-brand">
@@ -34,10 +34,10 @@ const Header = () => {
                 </svg>
             </div>
             <div className="cart-container">
-                    <button>
-                        <span data-items={0}>Cart</span>
-                        <img src={AddToCartIcon} alt="Cart Icon" className="cart-icon" />
-                    </button>
+                <button>
+                    <span data-items={count}>Cart</span>
+                    <img src={AddToCartIcon} alt="Cart Icon" className="cart-icon" />
+                </button>
             </div>
         </header >
     )
